@@ -88,3 +88,10 @@ graph TD;
 - Passphrase: "MySecretPassphrase123!"
 - Explanation: In this example, a passphrase "MySecretPassphrase123!" is chosen. A key derivation function is applied to convert the passphrase into a seed, which is then used to derive cryptographic keys. Passphrase-based key generation offers the advantage of usability and accessibility, as users can easily remember their passphrase and derive keys from it.
 
+> [!WARNING]  
+> It's essential to understand the following security considerations regarding cryptographic keys in Zcash:
+>
+> - **Private Key Loss:** If you lose your private key, there is typically no way to recover it. Therefore, it's crucial to securely store your private keys and create backups to prevent loss.
+> - **Ownership and Access:** Anyone in possession of your private key can access and spend the associated coins. Thus, it's paramount to safeguard your private keys from unauthorized access.
+>
+> Taking proactive measures to protect your private keys is fundamental to ensuring the security of your Zcash holdings. By maintaining strict control over your private keys and adhering to best practices in key management, you can mitigate the risks associated with key loss and unauthorized access.
