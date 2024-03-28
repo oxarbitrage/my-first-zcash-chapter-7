@@ -8,9 +8,9 @@ This curve is specifically chosen for its cryptographic properties, including it
 
 The multiplication of a private key (a random number) with a starting point on the curve results in an X and Y coordinate pair representing a valid point on the curve, this is for our purposes the derived public key.
 
-Let's see a step by step example with small numbers so we can see the process:
+Let's see the process step by step:
 
-- Choose a Random Private Key (Scalar): Let's select a random private key $d$ as our scalar. For example, let's say  $d=1234$.
+- Choose a Random Private Key (Scalar): Let's select a random private key $d$ as our scalar.
 
 - Select the Initial Point (Generator Point): In elliptic curve cryptography, there is a fixed point called the generator point (often denoted as $G$) on the curve. For the secp256k1 curve used in Zcash, the generator point is predetermined. Let's assume $G$ is a known generator point on the secp256k1 curve.
 
