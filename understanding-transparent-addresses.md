@@ -44,7 +44,7 @@ P2PKH addresses in Zcash are derived from the public key hash. Here's how they a
 
 The diagram illustrates that the last 20 bytes represent the public key hash we studied earlier. To create a P2PKH address, the public key hash is encoded using **Base58Check**, with the prefix `t3` for the Zcash Mainnet:
 
-\[ \text{transparent\_address} = \text{'t3'} \mathbin\Vert \text{Base58Check(public\_key\_hash)} \]
+$transparent\\_address = 't3' \mathbin\Vert Base58Check(public\\_key\\_hash)$
 
 For example, if the Base58Check for the public key hash `58262d1fbdbe4530d8865d3518c6d6e41002610f` is `936CR3RBty2VxQWX2MgKk6vz63LTAm1UD`, then the corresponding Zcash Mainnet transparent address would be `t3936CR3RBty2VxQWX2MgKk6vz63LTAm1UD`.
 
