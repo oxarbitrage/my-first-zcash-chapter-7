@@ -53,3 +53,12 @@ For example, if the Base58Check for the public key hash `58262d1fbdbe4530d8865d3
 
 > [!NOTE]
 > The Base58Check encoding is a way to encode byte arrays into into human-typable strings.
+
+### P2SH addresses
+
+TODO
+
+![p2sh](https://github.com/oxarbitrage/my-first-zcash-chapter-7/assets/21685097/c06d614f-690c-4e3c-8cb6-b55fa4ed63d0)
+
+
+
