@@ -8,4 +8,5 @@ maybe an image here
 - [7.1 Transparent addresses](transparent-addresses.md)
   - [7.1.1 Generating Keys](transparent-addresses.md#711-generating-keys)
   - [7.1.2 Understanding Zcash Transparent Public Keys](understanding-public-keys.md)
+  - [7.1.3 Understanding Zcash Transparent Addresses](understanding-transparent-addresses.md)
 
