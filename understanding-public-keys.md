@@ -1,6 +1,6 @@
 ## 7.1.2 Understanding Zcash Transparent Public Keys
 
-In Zcash, transparent addresses and public keys play crucial roles in facilitating transactions and ensuring security. Here's a breakdown of how they work:
+In Zcash, public keys are important components in enabling transparent transactions. Here's a breakdown of hoiw they are derived, from the private key:
 
 A public key is derived from the private key through elliptic curve point multiplication, utilizing the parameters of the secp256k1 curve. The secp256k1 curve is defined by the equation: $y^2 = x^3 + 7$
 
