@@ -108,3 +108,92 @@ graph TD
     style S fill: #fff,stroke:#FFA500,stroke-width:2px;
     style T fill: #fff,stroke:#FFA500,stroke-width:2px;
 ```
+
+> [!TIP]
+> Understanding Wallet Interaction with the Zcash Blockchain
+>
+> Ever wondered how the wallet on your phone communicates with the Zcash blockchain? Here's a brief overview:
+>
+> - Wallet applications connect to the blockchain through nodes or servers that maintain a complete transaction history. These nodes listen on specific ports for Remote Procedure Call (RPC) commands, allowing the wallet software to send transactions to the blockchain and receive data in response.
+> - Within the Zcash ecosystem, there are primarily two types of node software:
+>
+>   - The original node, a fork from Bitcoin, modified and written in C++.
+>   - The Zebra node, developed from scratch in Rust.
+>
+> - Both types of nodes offer RPC endpoints for communication with the blockchain. While it's anticipated that the Zebra node (`zebrad`) might become the main node in the future, examples here will focus on interacting with the Zebra node whenever possible.
+> - To interact with the blockchain, such as sending transparent transactions, the `sendrawtransaction` RPC call is commonly used.
+> - The standard port for Zcash Mainnet RPC methods is 8232. An example session might use the curl command on Linux to request data from the blockchain:
+
+**Examples*:
+
+Retrieve some blockchain data from the RPC interface.
+
+
+Get blockchain information:
+```bash
+$ curl --silent --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'Content-type: application/json' http://127.0.0.1:8232/ | jq
+{
+  "result": {
+    "chain": "main",
+    "blocks": 411181,
+    "bestblockhash": "00000000018d76bfa07b64e32486ee0336afccbb18932925c99d97b3f1de299f",
+    "estimatedheight": 2464100,
+    "upgrades": {
+      "5ba81b19": {
+        "name": "Overwinter",
+        "activationheight": 347500,
+        "status": "active"
+      },
+      "76b809bb": {
+        "name": "Sapling",
+        "activationheight": 419200,
+        "status": "pending"
+      },
+      "2bb40e60": {
+        "name": "Blossom",
+        "activationheight": 653600,
+        "status": "pending"
+      },
+      "f5b9230b": {
+        "name": "Heartwood",
+        "activationheight": 903000,
+        "status": "pending"
+      },
+      "e9ff75a6": {
+        "name": "Canopy",
+        "activationheight": 1046400,
+        "status": "pending"
+      },
+      "c2d6d0b4": {
+        "name": "NU5",
+        "activationheight": 1687104,
+        "status": "pending"
+      }
+    },
+    "consensus": {
+      "chaintip": "5ba81b19",
+      "nextblock": "5ba81b19"
+    }
+  },
+  "id": "curltest"
+}
+$
+```
+
+Get information for the block height `123`:
+```bash
+$ curl --silent --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["123"] }' -H 'Content-type: application/json' http://127.0.0.1:8232/ | jq
+{
+  "result": {
+    "hash": "000092a5acc3cf903f0c6b0124d0db60646c17624021f5667d242fd038131e24",
+    "confirmations": 411438,
+    "height": 123,
+    "tx": [
+      "7ef714e1545d484a0cabe56db69acff925431d4855d209e37259e1fdd1bb1137"
+    ],
+    "trees": {}
+  },
+  "id": "curltest"
+}
+$
+```
