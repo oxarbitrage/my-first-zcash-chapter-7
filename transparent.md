@@ -1,4 +1,4 @@
-# 7.1 Transparent Addresses
+# 7.1 Transparent World
 
 In cryptocurrency, particularly in Zcash, a wallet is essentially a collection of keys. Initially, a private key is generated, from which a corresponding public key is derived. Subsequently, a hash function is applied to the public key, resulting in a payment address. This address serves as the destination for incoming funds.
 
@@ -12,7 +12,7 @@ This curve operates over a finite field $F_p$, where $p$ is an exceedingly large
 
 Here is a visualization of the secp256k1 curve with the Real numbers as the domain of the function. It's important to note that while this visualization helps in understanding the curve's shape, the actual domain used in cryptographic operations is not the real numbers, but rather the finite field $F_p$.
 
-![secp256k1](https://github.com/oxarbitrage/my-first-zcash-chapter-7/assets/21685097/a7863807-beb1-49d5-9293-a36f20dad568)
+![secp256k1](assets/secp256k1.png)
 
 In Zcash, cryptographic keys can be generated through various methods, each offering unique advantages in terms of security and usability. Here, we explore three common approaches:
 

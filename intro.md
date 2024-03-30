@@ -2,9 +2,9 @@
 
 The history of Zcash is intimately linked with Zero-Knowledge Proofs (ZKPs), particularly Zero-Knowledge Succinct Non-Interactive Argument of Knowledge (zk-SNARK). These mechanisms allow proving possession of certain information without revealing that information itself.
 
-The Zcash project is a fusion of complex mathematical concepts and sophisticated cryptography, intricately woven into the fabric of its software engineering design. Navigating through the depths of knowledge required to comprehend Zcash can be daunting. However, our approach will be to unveil these concepts as we journey through them, culminating in a profound understanding of how Zcash achieves its primary objective: preserving financial privacy on an open and secure blockchain.
+The Zcash initiative combines advanced mathematics with state-of-the-art encryption, smoothly incorporated into its software architecture. Navigating through the depths of knowledge required to comprehend Zcash can be scary. However, our approach will be to unveil these concepts as we journey through them, culminating in a profound understanding of how Zcash achieves its primary objective: preserving financial privacy on an open and secure blockchain.
 
-Throughout this journey, we will delve into the annals of history, tracing Zcash's inception, and discerning the rationale behind pivotal decisions. By the end, you will possess a robust comprehension of the myriad components that constitute Zcash today, empowering you to delve deeper into any facet presented herein.
+Throughout this journey, we will delve into the annals of history, tracing Zcash's inception, and discerning the rationale behind pivotal decisions. By the end, you will possess a robust comprehension of the myriad components that constitute Zcash today, empowering you to delve deeper into any aspect presented herein.
 
 While a foundation in undergraduate mathematics, programming, and blockchain understanding will certainly aid your exploration, it is not a prerequisite.
 

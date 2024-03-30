@@ -40,7 +40,7 @@ In Zcash, transparent addresses serve as identifiers for receiving funds in tran
 
 P2PKH addresses in Zcash are derived from the public key hash. Here's how they are encoded:
 
-![p2pkh](https://github.com/oxarbitrage/my-first-zcash-chapter-7/assets/21685097/4741f524-c1f1-4bf8-8153-a9168941c466)
+![p2pkh](assets/p2pkh.png)
 
 The diagram illustrates that the last 20 bytes represent the public key hash we studied earlier. To create a P2PKH address, the public key hash is encoded using **Base58Check**, with the prefix `t3` for the Zcash Mainnet:
 
@@ -58,7 +58,7 @@ For example, if the Base58Check for the public key hash `58262d1fbdbe4530d8865d3
 
 TODO
 
-![p2sh](https://github.com/oxarbitrage/my-first-zcash-chapter-7/assets/21685097/c06d614f-690c-4e3c-8cb6-b55fa4ed63d0)
+![p2sh](assets/p2sh.png)
 
 
 
