@@ -52,6 +52,7 @@ Where:
 
 > [!TIP]
 > Curve25519 is a state-of-the-art elliptic curve used for cryptographic purposes, particularly in key agreement protocols like Elliptic Curve Diffie-Hellman (ECDH). Designed by Daniel J. Bernstein, it offers 128 bits of security and is known for its high performance, strong security properties, and simplicity of implementation. The curve operates over a prime field defined by the prime number $2^{255} - 19$, giving the curve its name. The curve equation is $y^3 = x^3 + 486662x^2 + x$.
+
 ![curve25519](assets/curve25519.png)
 
 > [!TIP]
