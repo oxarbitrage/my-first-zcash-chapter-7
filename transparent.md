@@ -29,6 +29,9 @@ graph TD;
     style b stroke:#FFA500,stroke-width:2px;
     style c stroke:#FFA500,stroke-width:2px;
 
+    style a fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style b fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style c fill: #fff,stroke:#FFA500,stroke-width:2px;
 ```
 
 **Advantages:**
@@ -52,6 +55,9 @@ graph TD;
     A[Random Number Generation] --> B[Key Derivation];
     style A stroke:#FFA500,stroke-width:2px;
     style B stroke:#FFA500,stroke-width:2px;
+
+    style A fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style B fill: #fff,stroke:#FFA500,stroke-width:2px;
 ```
 
 **Advantages:**
@@ -76,6 +82,10 @@ graph TD;
     style A stroke:#FFA500,stroke-width:2px;
     style B stroke:#FFA500,stroke-width:2px;
     style C stroke:#FFA500,stroke-width:2px;
+
+    style A fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style B fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style C fill: #fff,stroke:#FFA500,stroke-width:2px;
 ```
 
 **Advantages:**

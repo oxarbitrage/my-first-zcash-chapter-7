@@ -40,15 +40,16 @@ graph TD;
     G --> H[Append Sign Byte to Hexadecimal X Coordinate];
     H --> I[Compressed Public Key];
 
-  style A stroke:#FFA500,stroke-width:2px;
-  style B stroke:#FFA500,stroke-width:2px;
-  style C stroke:#FFA500,stroke-width:2px;
-  style D stroke:#FFA500,stroke-width:2px;
-  style E stroke:#FFA500,stroke-width:2px;
-  style F stroke:#FFA500,stroke-width:2px;
-  style G stroke:#FFA500,stroke-width:2px;
-  style H stroke:#FFA500,stroke-width:2px;
-  style I stroke:#FFA500,stroke-width:2px;
+    style A fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style B fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style C fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style D fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style E fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style F fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style G fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style H fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style I fill: #fff,stroke:#FFA500,stroke-width:2px;
+
 ```
 
 ### Example

@@ -47,6 +47,17 @@ graph TD
     click E href "https://z.cash/upgrade/heartwood/"
     click F href "https://z.cash/upgrade/canopy/"
     click G href "https://z.cash/upgrade/nu5/"
+
+    style A fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style B fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style C fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style D fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style E fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style F fill: #fff,stroke:#FFA500,stroke-width:2px;
+    style G fill: #fff,stroke:#FFA500,stroke-width:2px;
+
+
+
 ```
 
 > [!TIP] 
