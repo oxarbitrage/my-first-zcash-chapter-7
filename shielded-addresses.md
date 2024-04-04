@@ -67,3 +67,187 @@ A sprout payment address may looks as follows:
 ```
 zcHxkDeJqGTRxGV1xYX5vhN2LzBSNpo9qf8QVY1LMYoiXnuDkRTJq8Bb5AWREgFeRmFVh9SzvcG4HAMFzSUZ6GfgNeswZvK
 ```
+
+#### Sapling private keys
+
+Sapling addresses and functionality represent an evolution within the Zcash protocol, offering enhanced efficiency and features compared to their Sprout predecessors. 
+
+A Sapling private key is a random number selected from a finite field of integers modulo $2^{256}$. For instance, a possible private key could be:
+
+$112422864109833081728379801838394881852023339428169431441267193028985383981010$
+
+In hexadecimal notation, this key is represented as:
+
+`0xf88d160e57449510505f57e6d09ef8b5084521ac196fe481a572bcab37168fd2`
+
+From this private key, several other keys can be derived
+
+To derive the Sapling spending key from the private key, Zcash employs a specific encoding named $LEBS2OSP$.
+
+${spending\_key} = LEBS2OSP_{256}({private\_key})$
+
+Where:
+
+- ${LEBS2OSP}_\ell(B)$ is defined for $\ell$ being a multiple of $8$ as: 
+    - Converting each 8-bit group in $B$ to a byte, with the least significant bit first.
+    - Concatenate these bytes in the original group order.
+
+For example 
+
+```
+LEBS2OSP(112422864109833081728379801838394881852023339428169431441267193028985383981010) = 0xd28f1637abbc72a581e46f19ac214508b5f89ed0e6575f50109544570e168df8
+```
+
+In the Zcash ecosystem, addresses often undergo a $Base58Check$ encoding for readability and error-checking purposes. The prefix `secret-spending-key-main` is used in Mainnet to denote a Sapling spending key, resulting in an address like:
+
+```
+secret-spending-key-main2bjSq7g7aeDndTp4gw3XWVU8jMF6zBNAXLddhN4oK7kcye4Ekc
+```
+
+#### Sapling master keys
+
+Following ZIP-32, Zcash wallets transitioned to using sapling extended spending keys. These keys originate from a master key, which in turn is derived from a seed. The seed must be at least 32 bytes and not exceed 252 bytes in length.
+
+For illustration, consider a 32-byte seed in hexadecimal:
+
+```
+0x26bb0d6181450ca216851a095a615101fd068783a215a9f5b811bd29f9cedb6e
+```
+
+The master key generation algorithm applies the $BLAKE2b−512$ hash function to the seed  $S$ with a prefix "ZcashIP32Sapling":
+
+$I = BLAKE2b-512("ZcashIP32Sapling", S)$
+
+The output $I$ is 64 bytes long, divided into two 32-byte halves. The left half is the master spending key ($sk_m$), and the right half is the master chain code ($c _m$).
+
+The master chain code $c_m$ is crucial for generating a hierarchy of keys, enabling secure and organized key derivation for multiple addresses and functionalities. This hierarchical structure is essential for creating diversified addresses and managing wallet security.
+
+> [!NOTE]
+> The BLAKE2b-512 hash function:
+> 
+> The BLAKE2b-512 hash function is a cryptographic hash function that is part of the BLAKE2 family, designed as an improvement on the BLAKE algorithm, which was a finalist in the NIST hash function competition. BLAKE2b is optimized for 64-bit platforms and is capable of producing hash values of different lengths, with 512 bits (64 bytes) being one of the standard options. It offers high security and is faster than the previous generation hash functions like MD5, SHA-1, and SHA-2, especially in software implementations.
+
+In the Zcash Sapling protocol, whether you start with a spending key or a master key, several components can be derived, each serving distinct roles in various cryptographic processes:
+
+- Spend authorizing key $ask$: Used to authorize spending operations.
+- The proof authorizing key $nsk$: Utilized in generating zero-knowledge proofs for transactions, ensuring the spender has the right to spend.
+- The outgoing viewing key $ovk$: Allows the holder to view outgoing transaction details without revealing the transaction's value to others.
+- The diversifier key $dk$: Used to generate diversified addresses, allowing users to use multiple addresses derived from the same key.
+
+From these components, standard keys are derived for transaction processes:
+
+- Authorizing key $ak$: Derived from $ask$, used in the transaction signing process to prove ownership of the funds being spent. Uses operations in the ellpitic curve **JubJub curve** for derivation.
+- Nullifier key $nk$: Derived from $nsk$, used to mark spent notes and prevent double-spending. Derivied using JubJub operations.
+- Incoming viewing key $ivk$: Derived from $ak$ and $nk$, allows the holder to view incoming transactions to the addresses derived from the corresponding $dk$.
+
+> [!NOTE]
+> JubJub Curve: 
+>The JubJub curve is a twisted Edwards curve specifically chosen for its efficiency and security properties, which are ideal for the construction of zero-knowledge proofs within the Zcash protocol. It allows for fast, secure elliptic curve operations essential for generating and verifying transactions in a privacy-preserving manner.
+
+![jubjub_curve](assets/jubjub.png)
+
+The master extended spending key is the tuple $(ask_m, nsk_m, ovk_m, dk_m, c_m)$
+
+This tuple is then encoded using the encoding formula:
+
+$EncodeExtSKParts(ask, nsk, ovk, dk) := I2LEOSP_{256}(ask) || I2LEOSP_{256}(nsk) || ovk || dk$
+
+#### Sapling child keys
+
+The derivation of Sapling child keys allows for the creation of multiple, distinct addresses from a single master key. This process follows a hierarchical deterministic (HD) structure, enabling efficient management and recovery of addresses.
+
+The formula for deriving child keys is as follows:
+
+$CKD_{\text{Sapling}}(sk_m, i) = sk_i || c_i$
+
+Where:
+
+- $CKD_{\text{Sapling}}$ denotes the child key derivation function for Sapling.
+- $sk_m$ is the master spending key.
+- $i$ is the index of the child key.
+- $sk_i$ is the i-th child spending key.
+- $c_i$ is the i-th child chain code.
+
+Each child key can further derive its own child keys, creating a tree-like structure of keys. This is especially useful for organizing addresses into categories (e.g., for receiving, change, or different purposes).
+
+**Example:**
+
+Suppose we have a master spending key 
+
+```
+sk_m = 0xf88d160e57449510505f57e6d09ef8b5084521ac196fe481a572bcab37168fd2
+``` 
+
+and we wish to derive the first child key (`i=1`).
+
+The derived child key might look something like:
+
+```
+sk_1 = 0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0
+```
+with its corresponding child chain code 
+
+```
+c_1 = 0x0fedcba9876543210fedcba9876543210fedcba9876543210fedcba987654321
+```
+
+This hierarchical structure enables a single seed to recover an entire wallet of multiple addresses.
+
+#### Sapling payment address
+
+To derive a Sapling payment address in the Zcash ecosystem, you'll follow a sequence of cryptographic steps. These steps involve using several key components derived from your private spending key, as well as utilizing the JubJub elliptic curve for certain operations. Here's a simplified overview of the process:
+
+**Step 1: Derive Key Components**
+
+First, ensure you have derived the necessary key components:
+
+- Spend Authorizing Key (`ask`): Derived from the private spending key.
+- Proof Authorizing Key (`nsk`): Also derived from the private spending key.
+- Diversifier Key (`dk`): Used to generate diversified addresses.
+
+**Step 2: Generate the Diversifier**
+
+The diversifier (`d`), a part of the Sapling payment address, is a 11-byte value that ensures the payment address is unique. It's typically found by iterating through possible values until one is found that works with the other components to generate a valid payment address.
+
+**Step 3: Calculate the Diversified Transmission Key**
+
+Using the diversifier `d` and your spend authorizing key `ask`, calculate the diversified transmission key `pk_d`:
+
+- `pk_d = [ask]G_d`, where `G_d` is a diversified base point on the JubJub curve calculated from the diversifier `d`. This operation involves elliptic curve multiplication, which relies on the specific properties of the JubJub curve.
+
+**Step 4: Derive the Incoming Viewing Key**
+
+The incoming viewing key (`ivk`) is derived from `ask` and `nsk`:
+
+`ivk = Hash(ask, nsk)` (simplified), where `Hash` is a specific cryptographic hash function. The actual derivation involves more steps to ensure the key's security and functionality within the Zcash protocol.
+
+**Step 5: Construct the Payment Address**
+
+The Sapling payment address (`zaddr`) is constructed from the diversifier `d` and the diversified transmission key `pk_d`:
+
+- `zaddr = (d, pk_d)`
+
+This address allows users to receive Zcash in a privacy-preserving manner. Transactions sent to this address are shielded, meaning that the transaction's details, such as the sender, receiver, and amount, are encrypted and not publicly visible on the blockchain.
+
+**Step 6: Encode Using Bech32**
+
+Sapling addresses are encoded using Bech32 whjere the human redable part is `zs` for the Zcash Mainnet. An example address might look as:
+
+```
+zs1z7rejlpsa98s2rrrfkwmaxu53e4ue0ulcrw0h4x5g8jl04tak0d3mm47vdtahatqrlkngh9sly
+```
+
+> [!NOTE]
+> Bech32
+>
+> Bech32 is a compact, error-detecting encoding scheme designed primarily for encoding addresses in Bitcoin and has since been adopted by various other cryptocurrencies, including Zcash for its Sapling payment addresses.
+> A Bech32 encoded string consists of:
+>
+> - A human-readable part (HRP).
+> - A separator, which is always `1`.
+> - A data part, which encodes the actual address information and includes a checksum at the end.
+>
+> Bech32 is kind of a replacement for Base58Check:
+> - Bech32 offers superior error detection and potential correction capabilities compared to Base58Check.
+> - Bech32 addresses are generally easier to read and transcribe accurately due to their case insensitivity and avoidance of visually similar characters.
+> - For equivalent data, Bech32 tends to produce shorter encoded outputs than Base58Check, beneficial for QR codes and UI presentation.
