@@ -238,8 +238,6 @@ zs1z7rejlpsa98s2rrrfkwmaxu53e4ue0ulcrw0h4x5g8jl04tak0d3mm47vdtahatqrlkngh9sly
 ```
 
 > [!NOTE]
-> Bech32
->
 > Bech32 is a compact, error-detecting encoding scheme designed primarily for encoding addresses in Bitcoin and has since been adopted by various other cryptocurrencies, including Zcash for its Sapling payment addresses.
 > A Bech32 encoded string consists of:
 >
@@ -251,3 +249,56 @@ zs1z7rejlpsa98s2rrrfkwmaxu53e4ue0ulcrw0h4x5g8jl04tak0d3mm47vdtahatqrlkngh9sly
 > - Bech32 offers superior error detection and potential correction capabilities compared to Base58Check.
 > - Bech32 addresses are generally easier to read and transcribe accurately due to their case insensitivity and avoidance of visually similar characters.
 > - For equivalent data, Bech32 tends to produce shorter encoded outputs than Base58Check, beneficial for QR codes and UI presentation.
+
+### Orchard shielded addresses and keys
+
+With an understanding of Sprout and Sapling, we now explore the Orchard protocol within the Zcash ecosystem, focusing on its keys and addresses.
+
+#### Orchard master key
+
+The generation of the Orchard master key is straightforward. Starting with a random sequence of bytes known as a seed, the process involves hashing this sequence:
+
+$I = BLAKE2b-512("ZcashIP32Orchard", S)$
+
+This operation yields a 64-byte output, divided into two halves: the left 32 bytes form the master spending key \(sk_m\), and the right 32 bytes constitute the master chain code \(c_m\).
+
+The Orchard master extended spending key is represented by the tuple \((sk_m, c_m)\).
+
+#### Orchard deriving standard keys
+
+Orchard introduces changes from Sapling, notably in its use of a new curve. Unlike Sapling's RedJubjub curve, Orchard utilizes the Pasta curves, with Pallas and Vesta being the two curves part of this set.
+
+> [!NOTE]
+> **Pasta Curves**: Introduced in the Orchard protocol, Pasta curves (Pallas and Vesta) are elliptic curves that provide security and efficiency improvements for the Zcash protocol. They support the Halo 2 proving system, which enables recursive proofs without a trusted setup, enhancing both the scalability and privacy of Zcash.
+
+![pasta_curve](assets/pasta.png)
+
+The derivation process in Orchard, similar to Sapling, applies the `toscalar` function on the Pallas curve to derive several key components from the spending key: the spend authorizing key (\(ask\)), the randomized commit (\(rivk\)), the diversifier key (\(dk\)), the incoming viewing key (\(ivk\)), and the outgoing viewing key (\(ovk\)). The specifics of these derivations are detailed in the Zcash protocol documentation, highlighting the complex cryptographic operations involved.
+
+A full viewing key in Orchard is thus the tuple \((ak, nk, rivk)\).
+
+#### Deriving Orchard internal addresses
+
+Orchard allows for the derivation of addresses used for internal operations, such as change transactions or auto-shielding, enhancing privacy and security.
+
+> [!NOTE]
+> **Auto-Shielding**: In the context of Zcash, auto-shielding refers to the automatic conversion of transparent funds into shielded funds within a user's wallet. This process increases privacy by moving funds into the shielded pool, where transaction details such as amounts and parties are encrypted.
+
+The derived full viewing key for internal use is defined as \((ak, nk, rivk_{internal})\), where:
+
+\[rivk_{internal} = \text{ToScalar}^{\text{Orchard}}(\text{PRF}^{\text{expand}}(K, [0x83] || \text{I2LEOSP}_{256}(ak) || \text{I2LEOSP}_{256}(nk)))\]
+
+Here, \(K = \text{I2LEBSP}_{256}(rivk)\), applying Orchard-specific cryptographic functions to generate keys tailored for internal operations.
+
+
+#### Orchard raw payment address
+
+To generate an Orchard raw payment address, combine the diversifier \(d\) and the transmission key \(pk_d\), derived from the master key or other relevant key material. This address allows for receiving shielded funds, maintaining the privacy of transaction details.
+
+TODO: ADD MORE
+
+### Unified addresses
+
+Zcash's introduction of Unified Addresses marks a significant advancement, simplifying user interaction with different address types. Unified Addresses encapsulate information for multiple types of addresses (transparent, Sapling, and Orchard) within a single, user-friendly identifier. This innovation facilitates transactions between different pools and address types, streamlining the user experience while preserving privacy and interoperability within the Zcash ecosystem.
+
+TODO: ADD MORE
