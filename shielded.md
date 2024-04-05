@@ -55,15 +55,9 @@ graph TD
     style E fill: #fff,stroke:#FFA500,stroke-width:2px;
     style F fill: #fff,stroke:#FFA500,stroke-width:2px;
     style G fill: #fff,stroke:#FFA500,stroke-width:2px;
-
-
-
 ```
 
 > [!TIP] 
-> Trusted setups
->  
-> TODO
+>In Zcash, the "trusted setup" is a foundational step required for the secure implementation of zk-SNARKs, the cryptographic method enabling privacy in transactions. This process involves generating a set of public parameters (often referred to as "toxic waste") essential for constructing zero-knowledge proofs. The integrity of this setup is crucial; any compromise could potentially allow the creation of counterfeit coins. To mitigate this risk, Zcash's initial setups for the Sprout and Sapling upgrades involved elaborate ceremonies with multiple participants, designed to ensure that as long as one party securely destroyed their portion of the toxic waste, the network would remain secure.
 >
-
-
+>However, acknowledging the inherent risk and trust involved in such setups, Zcash moved towards an "untrusted setup" with the introduction of the Halo 2 proving system in the Orchard network upgrade. Halo 2 eliminates the need for a trusted setup by using recursive zk-SNARKs that don't require a setup phase vulnerable to the toxic waste dilemma. This advancement significantly reduces the trust required in the setup process, enhancing the security and decentralization of the network by removing the potential for a single point of failure in the creation of zk-SNARK parameters. This shift marks a significant milestone in Zcash's evolution, offering robust privacy without the need for a trusted setup ceremony.
