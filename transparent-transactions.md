@@ -1,8 +1,8 @@
-## 7.1.4 Understanding transparent transactions
+## 7.1.4 Transparent transactions
 
 Zcash supports two types of addresses: transparent (**t-addresses**) and shielded (**z-addresses**). Transparent transactions are like Bitcoin transactions, where the details of the transaction, including sender, receiver, and amount, are publicly visible on the blockchain. 
 
-In a typical blockchain system like Bitcoin or Zcash transparent mode, a transaction includes inputs and outputs. Inputs are the references to previously received tokens (in Bitcoin's terminology, BTC; in Zcash, **ZEC**) that are being spent, while outputs are the new transactions created to transfer value to another address. Essentially, inputs unlock tokens to be spent, and outputs lock these tokens by assigning them to new owners, setting the stage for future transactions​.
+In a typical blockchain system like Bitcoin or in Zcash transparent world, a transaction includes inputs and outputs. Inputs are the references to previously received tokens (in Bitcoin's terminology, BTC; in Zcash, **ZEC**) that are being spent, while outputs are the new transactions created to transfer value to another address. Essentially, inputs unlock tokens to be spent, and outputs lock these tokens by assigning them to new owners, setting the stage for future transactions​.
 
 The following diagram outlines the difference between transparent and shielded transactions:
 

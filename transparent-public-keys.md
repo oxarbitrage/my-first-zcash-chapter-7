@@ -1,4 +1,4 @@
-## 7.1.2 Understanding Zcash Transparent Public Keys
+## 7.1.2 Transparent Public Keys
 
 In Zcash, public keys are important components in enabling transparent transactions. Here's a breakdown of how they are derived, from the private key:
 

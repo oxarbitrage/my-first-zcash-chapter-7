@@ -1,4 +1,4 @@
-## 7.1.3 Understanding transparent addresses
+## 7.1.3 Transparent addresses
 
 In Zcash transparent world, a **public key hash** is created by applying two hash functions to the public key, just as in Bitcoin:
 

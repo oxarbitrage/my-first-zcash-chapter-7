@@ -1,6 +1,6 @@
 # Chapter 7 
 
-maybe an image here
+TODO: Add an image here
 
 ## Decoding Zcash: Math, Cryptography, and Blockchain
 
