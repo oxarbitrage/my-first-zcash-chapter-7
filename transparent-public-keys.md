@@ -69,5 +69,5 @@ Obtain public key:
   - For example: $P = 1G + 2G + 3G + ... + 1234G$
 - Determine Sign of $Y$: $Y$ is odd (7), so the sign byte is 03.
 - Encode X Coordinate to Hexadecimal: $X = 5$ which in hexadecimal is $0x5$.
-- Append Sign Byte to Hexadecimal X Coordinate:** Concatenate the sign byte 03 to $0x5$ resulting in $0305$.
+- Append Sign Byte to Hexadecimal X Coordinate: Concatenate the sign byte 03 to $0x5$ resulting in $0305$.
 - Compressed Public Key: $\text{Compressed Public Key} = 0305$

@@ -1,6 +1,6 @@
 ## 7.1.3 Understanding transparent addresses
 
-In Zcash transparent mode, a **public key hash** is created by applying two hash functions to the public key, just as in Bitcoin:
+In Zcash transparent world, a **public key hash** is created by applying two hash functions to the public key, just as in Bitcoin:
 
 $public\\_key\\_hash = RIPEMD160(SHA256(public\\_key))$
 
@@ -56,9 +56,18 @@ For example, if the Base58Check for the public key hash `58262d1fbdbe4530d8865d3
 
 ### P2SH addresses
 
-TODO
+P2SH addresses in Zcash are derived from a script hash instead of a public key hash. This type of address allows users to send transactions to a script's hash (essentially a digital fingerprint of a complex script) rather than to a specific public key or public key hash. Here's the general process for creating P2SH addresses:
+
+First, a script is created. This could be any script, but it typically involves conditions for spending the coins, such as requiring signatures from multiple parties (multisig) or fulfilling other specific conditions.
+
+The script is then hashed using SHA256 and RIPEMD160, similar to how the public key hash is generated for P2PKH addresses. This produces a 20-byte script hash.
+
+The script hash is then encoded using `Base58Check` encoding, with the prefix t2 for the Zcash Mainnet, to produce a P2SH address.
+
+The process can be summarized by the formula:
+
+$P2SH\_address = 't2' \mathbin\Vert Base58Check(script\_hash)$
+
+For example, if a script's SHA256 and RIPEMD160 hash results in `3e23e8160039594a33894f6564e1b1f46829c2a3`, and its Base58Check encoding is `X7Jknp2qvUd4D4Rx8JxzyTJ4aL3KnvEtT`, then the corresponding Zcash Mainnet P2SH address would be `t2X7Jknp2qvUd4D4Rx8JxzyTJ4aL3KnvEtT`.
 
 ![p2sh](assets/p2sh.png)
-
-
-
