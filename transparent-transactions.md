@@ -29,7 +29,7 @@ Here we are going to be looking at the transparent side, here are the main conce
 
 - Transparent Addresses: These are similar to Bitcoin addresses, easily recognized because they start with a "t". They allow funds to be sent in a manner where the transaction details (sender, receiver, amount) are visible on the blockchain.
 - Transaction Components: A transparent transaction typically consists of **inputs** and **outputs**:
-    - Inputs: Reference previous transactions' outputs, unlocking specific amounts of ZEC that were previously received.
+    - Inputs: Reference previous transactions outputs, unlocking specific amounts of ZEC that were previously received.
     - Outputs: Specify new recipients for ZEC and lock these amounts for future spending.
 - UTXOs (Unspent Transaction Outputs): Zcash, like Bitcoin, uses a UTXO model for tracking balances. Each transaction output becomes a UTXO until it is spent as an input in a new transaction.
 - Transaction Fees: Just like in Bitcoin, transaction fees in Zcash are deducted from the inputs, incentivizing miners to include transactions in the next block.

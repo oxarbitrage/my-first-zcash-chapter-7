@@ -11,6 +11,8 @@ TODO: Add an image here
   - [7.1.3 Transparent Addresses](transparent-addresses.md)
   - [7.1.4 Transparent Transactions](transparent-transactions.md)
 - [7.2 Shielded world](shielded.md)
+  - [7.2.1 Value pools](shielded.md#721-value-pools)
+  - [7.2.2 Evolution of Shielded Technology](shielded.md#722-evolution-of-shielded-technology)
   - [7.2.3 Shielded addresses and keys](shielded-addresses.md)
   - [7.2.4 Shielded transactions](shielded-transactions.md)
 - [7.3 Conclusion](conclusion.md)
