@@ -61,13 +61,13 @@ Given:
 
 Obtain public key:
 
-1. **Choose Random Private Key (Scalar):** $d = 1234$
-2. **Select Initial Point (Generator Point):** $G = (5, 7)$
-3. **Perform Scalar Multiplication:**
-   - Start with $P = \text{Identity Element}$ (0 in this case).
-   - Iterate $d$ times, adding $G$ to $P$ each time.
-   - For example: $P = 1G + 2G + 3G + ... + 1234G$
-4. **Determine Sign of $Y$:** $Y$ is odd (7), so the sign byte is 03.
-5. **Encode X Coordinate to Hexadecimal:** $X = 5$ which in hexadecimal is $0x5$.
-6. **Append Sign Byte to Hexadecimal X Coordinate:** Concatenate the sign byte 03 to $0x5$ resulting in $0305$.
-7. **Compressed Public Key:** $\text{Compressed Public Key} = 0305$
+- Choose Random Private Key (Scalar): $d = 1234$
+- Select Initial Point (Generator Point): $G = (5, 7)$
+- Perform Scalar Multiplication:
+  - Start with $P = \text{Identity Element}$ (0 in this case).
+  - Iterate $d$ times, adding $G$ to $P$ each time.
+  - For example: $P = 1G + 2G + 3G + ... + 1234G$
+- Determine Sign of $Y$: $Y$ is odd (7), so the sign byte is 03.
+- Encode X Coordinate to Hexadecimal: $X = 5$ which in hexadecimal is $0x5$.
+- Append Sign Byte to Hexadecimal X Coordinate:** Concatenate the sign byte 03 to $0x5$ resulting in $0305$.
+- Compressed Public Key: $\text{Compressed Public Key} = 0305$
