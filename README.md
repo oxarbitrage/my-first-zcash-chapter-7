@@ -1,6 +1,6 @@
 # Chapter 7 
 
-TODO: Add an image here
+![cypherpunk_zero_9719](assets/cover.png)
 
 ## Decoding Zcash: Math, Cryptography, and Blockchain
 
