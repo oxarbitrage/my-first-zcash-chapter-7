@@ -306,7 +306,7 @@ There is no Base58 or Bech32 user friendly encoding for raw orchard payment addr
 >
 > The short Weierstrass equation is a type of equation used to define elliptic curves over a field. It has the form $y^2 = x^3 + ax + b$ where  $a$ and $b$ are coefficients that determine the specific shape and properties of the elliptic curve, and $x$ and $y$ are the coordinates of points on the curve.
 
-### Unified addresses
+### 7.2.3.4 Unified addresses
 
 Zcash's introduction of Unified Addresses marks a significant advancement, simplifying user interaction with different address types. Unified Addresses encapsulate information for multiple types of addresses (transparent, Sapling, and Orchard) within a single, user-friendly identifier. This innovation facilitates transactions between different pools and address types, streamlining the user experience while preserving privacy and interoperability within the Zcash ecosystem.
 
