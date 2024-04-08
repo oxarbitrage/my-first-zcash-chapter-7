@@ -4,9 +4,9 @@ In this section, we go into the specifics of deriving various keys and addresses
 
 Upcoming sections will cover shielded transactions, bridging our understanding of Zcash's protocol and its main features.
 
-### Sprout shielded addresses and keys
+### 7.2.3.1 Sprout shielded addresses and keys
 
-This addresses are legacy, there is no RPC method available for creating this type of addresses anymore but they are still part of the protocol and there is still value in the sprout shielded pool. For this reaon and because they are part of the Zcash history we will study them in details here.
+This addresses are legacy, there is no RPC method available for creating this type of addresses anymore but they are still part of the protocol and there is still value in the sprout shielded pool. For this reaon and because they are part of the Zcash history we will study them with some level of details here.
 
 Sprout addresses, although legacy, remain an integral part of the Zcash protocol, holding value within the sprout shielded pool. Despite the absence of RPC methods for creating new Sprout addresses, understanding their mechanics is important not only due to their historical significance within Zcash but also because it lays the foundational knowledge necessary for comprehending the advancements and distinctions of later shielding technologies, such as Sapling and Orchard.
 
@@ -68,7 +68,7 @@ A sprout payment address may looks as follows:
 zcHxkDeJqGTRxGV1xYX5vhN2LzBSNpo9qf8QVY1LMYoiXnuDkRTJq8Bb5AWREgFeRmFVh9SzvcG4HAMFzSUZ6GfgNeswZvK
 ```
 
-#### Sapling private keys
+### 7.2.3.2 Sapling shielded addresses and keys
 
 Sapling addresses and functionality represent an evolution within the Zcash protocol, offering enhanced efficiency and features compared to their Sprout predecessors. 
 
@@ -92,7 +92,7 @@ Where:
     - Converting each 8-bit group in $B$ to a byte, with the least significant bit first.
     - Concatenate these bytes in the original group order.
 
-For example 
+For example:
 
 ```
 LEBS2OSP(112422864109833081728379801838394881852023339428169431441267193028985383981010) = 0xd28f1637abbc72a581e46f19ac214508b5f89ed0e6575f50109544570e168df8
@@ -250,7 +250,7 @@ zs1z7rejlpsa98s2rrrfkwmaxu53e4ue0ulcrw0h4x5g8jl04tak0d3mm47vdtahatqrlkngh9sly
 > - Bech32 addresses are generally easier to read and transcribe accurately due to their case insensitivity and avoidance of visually similar characters.
 > - For equivalent data, Bech32 tends to produce shorter encoded outputs than Base58Check, beneficial for QR codes and UI presentation.
 
-### Orchard shielded addresses and keys
+### 7.2.3.3 Orchard shielded addresses and keys
 
 With an understanding of Sprout and Sapling, we now explore the Orchard protocol within the Zcash ecosystem, focusing on its keys and addresses.
 
@@ -295,7 +295,16 @@ Here, \(K = \text{I2LEBSP}_{256}(rivk)\), applying Orchard-specific cryptographi
 
 To generate an Orchard raw payment address, combine the diversifier \(d\) and the transmission key \(pk_d\), derived from the master key or other relevant key material. This address allows for receiving shielded funds, maintaining the privacy of transaction details.
 
-TODO: ADD MORE
+The enconing of an orchard raw address is as follows:
+
+![orchard_raw_payment_address](assets/orchard_raw_payment_address.png)
+
+There is no Base58 or Bech32 user friendly encoding for raw orchard payment addresses, instead the **unified payment address** should be used, which will be described in the next section.
+
+> [!NOTE]
+> The "short Weierstrass compressed encoding" refers to a method of representing elliptic curve points in a compressed format, specifically for elliptic curves defined by the short Weierstrass equation. This method is relevant in the context of cryptographic operations, including those used in blockchain technologies like Zcash.
+>
+> The short Weierstrass equation is a type of equation used to define elliptic curves over a field. It has the form $y^2 = x^3 + ax + b$ where  $a$ and $b$ are coefficients that determine the specific shape and properties of the elliptic curve, and $x$ and $y$ are the coordinates of points on the curve.
 
 ### Unified addresses
 
