@@ -310,4 +310,30 @@ There is no Base58 or Bech32 user friendly encoding for raw orchard payment addr
 
 Zcash's introduction of Unified Addresses marks a significant advancement, simplifying user interaction with different address types. Unified Addresses encapsulate information for multiple types of addresses (transparent, Sapling, and Orchard) within a single, user-friendly identifier. This innovation facilitates transactions between different pools and address types, streamlining the user experience while preserving privacy and interoperability within the Zcash ecosystem.
 
-TODO: ADD MORE
+#### Derivation of Unified Addresses
+
+Unified Addresses in Zcash are designed to bundle various types of addresses, including transparent (P2PKH), Sapling, and Orchard addresses, into a single construct. This aggregation is facilitated through the use of Zcash's ZIP-316 specification, which defines the structure and encoding of Unified Addresses.
+
+Components of a Unified Address:
+
+- **Transparent Component**: Derived from the traditional P2PKH address format used in Bitcoin, this component allows for interoperability with systems that require transparent transactions.
+
+- **Sapling Component**: Utilizes zk-SNARKs for privacy-preserving transactions. Each Sapling address is associated with a unique viewing key and spending key.
+
+- **Orchard Component**: The latest addition to Zcash's privacy protocol, using Halo 2 proofs to enable efficient and private transactions without trusted setup.
+
+Encoding:
+
+Once the components of a Unified Address are derived, they are encoded into a single, user-friendly string using the `Bech32m` encoding format.
+
+Bech32m Encoding:
+
+- Each Unified Address begins with a human-readable prefix (`u1`) to indicate its network and type.
+- A separator (`1`) is used to distinguish the prefix from the encoded data.
+- The data part encodes the address information, including type codes and the addresses themselves, using a conversion of the raw bytes into a `Bech32m` character set.
+
+#### Practical Considerations
+
+Unified Addresses enable users and services to interact with multiple Zcash address types through a single identifier, simplifying transactions and enhancing privacy. When a user sends Zcash to a Unified Address, their wallet software automatically determines the most appropriate address type to use, based on the transaction's requirements and the capabilities of the sender's and receiver's wallets.
+
+For developers and users, understanding the derivation and encoding processes is crucial for correctly generating, decoding, and utilizing Unified Addresses. This knowledge ensures compatibility across different wallet implementations and services within the Zcash ecosystem.
